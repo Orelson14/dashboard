@@ -1,5 +1,5 @@
 import React from 'react';
-
+import CustomLineChart from "../../components/CustomLineChart/CustomLineChart";
 interface ProductCardProps {
   name: string;
   link: string;
@@ -8,6 +8,15 @@ interface ProductCardProps {
   networkClicks: number;
   clicksRatio: number;
 }
+
+const salesData1 = [
+  { sales1: 30, sales2: 20 },
+  { sales1: 50, sales2: 40 },
+  { sales1: 45, sales2: 60 },
+  { sales1: 70, sales2: 50 },
+  { sales1: 110, sales2: 65 },
+  { sales1: 100, sales2: 55 },
+];
 
 function ProductCard({ name, link, productViews, totalClicks, networkClicks, clicksRatio }: ProductCardProps) {
   return (
@@ -18,6 +27,9 @@ function ProductCard({ name, link, productViews, totalClicks, networkClicks, cli
       <p className="text-sm text-gray-500">Total Clicks: {totalClicks}</p>
       <p className="text-sm text-gray-500">Network Clicks: {networkClicks}</p>
       <p className="text-sm text-gray-500">Clicks Ratio: {clicksRatio}%</p>
+      <div className='courbe'>
+      <CustomLineChart data={salesData1} strokeColor1="#007bff" fillColor1="#007bff" strokeColor2="green" fillColor2="lightgreen" />
+      </div>
     </div>
   );
 }

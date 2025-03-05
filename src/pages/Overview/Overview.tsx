@@ -1,7 +1,7 @@
 import React from "react";
 //import StatCard from "../../components/StatCard/StatCard";
 import ProductCard from "../../components/ProductCard/ProductCard";
-import CustomLineChart from "../../components/CustomLineChart/CustomLineChart";
+//import CustomLineChart from "../../components/CustomLineChart/CustomLineChart";
 import {
   AiOutlineInfoCircle,
   AiOutlineEdit,
@@ -23,7 +23,7 @@ function Overview() {
     { name: "Indonesia", users: 1328 },
   ];
 
-  const salesData1 = [
+  /*const salesData1 = [
     { name: 'Jan', sales1: 30, sales2: 20 },
     { name: 'Feb', sales1: 50, sales2: 40 },
     { name: 'Mar', sales1: 45, sales2: 60 },
@@ -57,20 +57,42 @@ function Overview() {
     { name: 'Apr', sales1: 70, sales2: 50 },
     { name: 'May', sales1: 110, sales2: 65 },
     { name: 'Jun', sales1: 100, sales2: 55 },
-  ];
+  ];*/
 
   const data = [
-    { name: "Jan", value: 100 },
+    { name: "Jan", value: 120 },
+    { name: "", value: 40 },
+    { name: "", value: 40 },
     { name: "Feb", value: 120 },
+    { name: "", value: 40 },
+    { name: "", value: 80 },
     { name: "Mar", value: 90 },
+    { name: "", value: 80 },
+    { name: "", value: 80 },
     { name: "Apr", value: 110 },
-    { name: "May", value: 130 },
+    { name: "", value: 80 },
+    { name: "", value: 40 },
+    { name: "May", value: 90 },
+    { name: "", value: 80 },
+    { name: "", value: 40 },
     { name: "Jun", value: 100 },
+    { name: "", value: 80 },
+    { name: "", value: 20 },
     { name: "Jul", value: 110 },
+    { name: "", value: 80 },
+    { name: "", value: 30 },
     { name: "Aug", value: 120 },
+    { name: "", value: 80 },
+    { name: "", value: 40 },
     { name: "Sep", value: 140 },
+    { name: "", value: 80 },
+    { name: "", value: 60 },
     { name: "Oct", value: 150 },
+    { name: "", value: 30 },
+    { name: "", value: 50 },
     { name: "Nov", value: 130 },
+    { name: "", value: 40 },
+    { name: "", value: 80 },
     { name: "Dec", value: 140 },
   ];
 
@@ -107,8 +129,8 @@ function Overview() {
               </div>
               {/* Valeur et variation */}
               <div className="flex items-center mt-4">
-                <p className="text-3xl font-bold">$32,892</p>
-                <p className="text-green-500 text-xs ml-2">↑52%</p>
+                <p className="text-xl font-bold">$32,892</p>
+                <p className="text-green-500 bg-green-100 text-xs ml-12 mt-5">↑52%</p>
               </div>
             </div>
 
@@ -122,7 +144,7 @@ function Overview() {
               {/* Valeur et variation */}
               <div className="flex items-center mt-4">
                 <p className="text-3xl font-bold">1,831</p>
-                <p className="text-green-500 text-xs ml-2">↑34%</p>
+                <p className="text-green-500 bg-green-100 text-xs mt-5">↑34%</p>
               </div>
             </div>
 
@@ -136,18 +158,18 @@ function Overview() {
               {/* Valeur et variation */}
               <div className="flex items-center mt-4">
                 <p className="text-3xl font-bold">96,8%</p>
-                <p className="text-green-500 text-xs ml-2">↑14%</p>
+                <p className="text-green-500 bg-green-100 text-xs ml-18 mt-5">↑14%</p>
               </div>
             </div>
           </div>
 
           {/* Graphique à barres */}
-          <div className="h-80">
+          <div className="h-60">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart width={700} height={300} data={data}>
-                <XAxis dataKey="name" />
-                <Bar dataKey="value" fill="#2563EB" /> {/* Couleur bleue */}
-                <Tooltip />
+              <BarChart width={700} height={0} data={data}>
+                <XAxis dataKey="name" tickMargin={8} axisLine={false} tickLine={false} tick={{ fill: 'gray', fontSize: 14, fontWeight: 'bold' }} />
+                <Bar dataKey="value" fill="blue" radius={[10, 10, 0, 0]} />
+                <Tooltip/>
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -156,27 +178,13 @@ function Overview() {
         <div className="bg-white rounded-lg shadow p-6">
           <h2 className="text-2xl font-semibold mb-6">Your Products</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <ProductCard
-              name="Nike Air Zoom Pegasus 39"
-              link="product-link"
-              productViews={1485}
-              totalClicks={1269}
-              networkClicks={829}
-              clicksRatio={97}
-            />
-            <ProductCard
-              name="Nike React Pegasus Trail 4"
-              link="product-link"
-              productViews={875}
-              totalClicks={750}
-              networkClicks={500}
-              clicksRatio={90}
-            />
+            <ProductCard name="Nike Air Zoom Pegasus 39" link="product-link" productViews={1485} totalClicks={1269} networkClicks={829} clicksRatio={97}/>
+            <ProductCard name="Nike React Pegasus Trail 4" link="product-link" productViews={875} totalClicks={750} networkClicks={500} clicksRatio={90} />
           </div>
         </div>
 
         {/* Sales Report */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+       {/*  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
       <div className="bg-zinc-200 rounded-lg shadow p-10">
         <h2 className="text-lg font-semibold mb-2">Sales Report 1</h2>
         <div style={{ height: "200px" }}>
@@ -191,7 +199,6 @@ function Overview() {
         </div>
       </div>
 
-          {/* Graphique 3 */}
           <div className="bg-zinc-200 rounded-lg shadow p-10">
             <h2 className="text-lg font-semibold mb-3">Sales Report 3</h2>
             <div style={{ height: "200px" }}>
@@ -199,14 +206,13 @@ function Overview() {
             </div>
           </div>
 
-          {/* Graphique 4 */}
           <div className="bg-zinc-200 rounded-lg shadow p-10">
             <h2 className="text-lg font-semibold mb-3">Sales Report 4</h2>
             <div style={{ height: "200px" }}>
             <CustomLineChart data={salesData4} strokeColor1="#007bff" fillColor1="#007bff" strokeColor2="#00c49f" fillColor2="lightblue" />
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <div className="space-y-8">

@@ -2,7 +2,7 @@ import React from 'react';
 import { LineChart, Line, XAxis, YAxis /*CartesianGrid*/, Tooltip, Area, ResponsiveContainer } from 'recharts';
 
 interface LineChartProps {
-  data: { name: string; sales1: number; sales2: number }[];
+  data: { sales1: number; sales2: number }[];
   strokeColor1: string;
   fillColor1: string;
   strokeColor2: string;
@@ -11,25 +11,25 @@ interface LineChartProps {
 
 function CustomLineChart({ data, strokeColor1, fillColor1, strokeColor2, fillColor2 }: LineChartProps) {
   return (
-    <div style={{ width: '100%', maxWidth: '800px', height: '200px' }}>
+    <div style={{ width: '60%', maxWidth: '600px', height: '230px' }}>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={data}>
           <defs>
             {/* Dégradé pour la courbe */}
             <linearGradient id="gradient1" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%" stopColor={fillColor1} stopOpacity={0.8} />
-              <stop offset="95%" stopColor={fillColor1} stopOpacity={0.1} />
+              <stop offset="95%" stopColor={fillColor1} stopOpacity={0.9} />
             </linearGradient>
 
             <linearGradient id="gradient2" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%" stopColor={fillColor2} stopOpacity={0.8} />
-              <stop offset="95%" stopColor={fillColor2} stopOpacity={0.1} />
+              <stop offset="95%" stopColor={fillColor2} stopOpacity={0.9} />
             </linearGradient>
           </defs>
 
           {/*<CartesianGrid strokeDasharray="3 3" />*/}
-          <XAxis dataKey="name" />
-          <YAxis />
+          <XAxis dataKey="name" axisLine={false} tickLine={false} />
+          <YAxis axisLine={false} tickLine={false} tick={false} />
           <Tooltip />
 
           {/*courbe et remplissage */}

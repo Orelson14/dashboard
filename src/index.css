@@ -180,9 +180,16 @@ hr {
   opacity: 0.6;
 }
 
+.courbe {
+  display: flex;
+  flex-direction: row-reverse;
+  
+
+}
+
 .area-fill-1 {
   fill: lightblue;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .area-fill-1 .recharts-area-area {
