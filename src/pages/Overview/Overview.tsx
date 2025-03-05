@@ -1,21 +1,21 @@
 import React from "react";
 //import StatCard from "../../components/StatCard/StatCard";
 import ProductCard from "../../components/ProductCard/ProductCard";
-import LineChart from "../../components/LineChart/LineChart";
+import CustomLineChart from "../../components/CustomLineChart/CustomLineChart";
 import {
   AiOutlineInfoCircle,
   AiOutlineEdit,
   AiOutlineSetting,
   AiOutlineEllipsis,
   AiOutlineArrowUp,
-  AiOutlineDownload,
-  AiOutlineShareAlt,
+  AiOutlineCalendar,
+  AiOutlineDownCircle,
 } from "react-icons/ai";
 import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer } from "recharts";
 
 function Overview() {
   const regions = [
-    { name: "United States", users: 8904 },
+    { name: "United Kingdom", users: 8904 },
     { name: "Germany", users: 4748 },
     { name: "Italy", users: 4673 },
     { name: "Russia", users: 3321 },
@@ -23,14 +23,40 @@ function Overview() {
     { name: "Indonesia", users: 1328 },
   ];
 
-  const salesData = [
-    { name: "Jan", sales: 4000 },
-    { name: "Feb", sales: 3000 },
-    { name: "Mar", sales: 2000 },
-    { name: "Apr", sales: 2780 },
-    { name: "May", sales: 1890 },
-    { name: "Jun", sales: 2390 },
-    { name: "Jul", sales: 3490 },
+  const salesData1 = [
+    { name: 'Jan', sales1: 30, sales2: 20 },
+    { name: 'Feb', sales1: 50, sales2: 40 },
+    { name: 'Mar', sales1: 45, sales2: 60 },
+    { name: 'Apr', sales1: 70, sales2: 50 },
+    { name: 'May', sales1: 110, sales2: 65 },
+    { name: 'Jun', sales1: 100, sales2: 55 },
+  ];
+
+  const salesData2 = [
+    { name: 'Jan', sales1: 30, sales2: 20 },
+    { name: 'Feb', sales1: 50, sales2: 40 },
+    { name: 'Mar', sales1: 45, sales2: 60 },
+    { name: 'Apr', sales1: 70, sales2: 50 },
+    { name: 'May', sales1: 110, sales2: 65 },
+    { name: 'Jun', sales1: 100, sales2: 55 },
+  ];
+
+  const salesData3 = [
+    { name: 'Jan', sales1: 30, sales2: 20 },
+    { name: 'Feb', sales1: 50, sales2: 40 },
+    { name: 'Mar', sales1: 45, sales2: 60 },
+    { name: 'Apr', sales1: 70, sales2: 50 },
+    { name: 'May', sales1: 110, sales2: 65 },
+    { name: 'Jun', sales1: 100, sales2: 55 },
+  ];
+
+  const salesData4 = [
+    { name: 'Jan', sales1: 30, sales2: 20 },
+    { name: 'Feb', sales1: 50, sales2: 40 },
+    { name: 'Mar', sales1: 45, sales2: 60 },
+    { name: 'Apr', sales1: 70, sales2: 50 },
+    { name: 'May', sales1: 110, sales2: 65 },
+    { name: 'Jun', sales1: 100, sales2: 55 },
   ];
 
   const data = [
@@ -49,25 +75,26 @@ function Overview() {
   ];
 
   return (
+    <div className="container mx-auto px-4 py-8">
     <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
       <div className="md:col-span-2 space-y-8">
         <div className="bg-white rounded-lg shadow p-6">
       {/* Titre et boutons */}
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-semibold">Dashboard</h2>
-        <div className="flex space-x-2">
-          {/* Bouton "Calendar" et icône */}
-          <button className="bg-gray-200 rounded-lg px-3 py-1 text-xs border border-gray-400 flex items-center">
-          <AiOutlineDownload className="text-gray-500 mr-2" />
-            Calendar
-          </button>
-          {/* Bouton "Export" et icône */}
-          <button className="bg-gray-200 rounded-lg px-2 py-1 text-xs border border-gray-400 flex items-center">
-          <AiOutlineShareAlt className="text-gray-500 mr-2" />
-            Export
-          </button>
+            <h2 className="text-2xl font-semibold">Dashboard</h2>
+            <div className="flex space-x-2">
+                {/* Bouton "Calendar" et icône */}
+                <button className="bg-gray-100 rounded-md px-3 py-2 text-sm border border-gray-300 flex items-center shadow-sm">
+                    <AiOutlineCalendar className="text-gray-500 mr-2" />
+                    Calendar
+                </button>
+                {/* Bouton "Export" et icône */}
+                <button className="bg-gray-100 rounded-md px-4 py-2 text-sm border border-gray-300 flex items-center shadow-sm">
+                    <AiOutlineDownCircle className="text-gray-600 mr-2" />
+                    Export
+                </button>
+            </div>
         </div>
-      </div>
 
           {/* Statistiques */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
@@ -149,36 +176,34 @@ function Overview() {
         </div>
 
         {/* Sales Report */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-          {/* Graphique 1 */}
-          <div className="bg-white rounded-lg shadow p-10">
-            <h2 className="text-lg font-semibold mb-2">Sales Report 1</h2>
-            <div style={{ height: "150px" }}>
-              <LineChart data={salesData} />
-            </div>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div className="bg-zinc-200 rounded-lg shadow p-10">
+        <h2 className="text-lg font-semibold mb-2">Sales Report 1</h2>
+        <div style={{ height: "200px" }}>
+        <CustomLineChart data={salesData1} strokeColor1="#007bff" fillColor1="#007bff" strokeColor2="green" fillColor2="lightgreen" />
+        </div>
+      </div>
 
-          {/* Graphique 2 */}
-          <div className="bg-white rounded-lg shadow p-10">
-            <h2 className="text-lg font-semibold mb-3">Sales Report 2</h2>
-            <div style={{ height: "150px" }}>
-              <LineChart data={salesData} />
-            </div>
-          </div>
+      <div className="bg-zinc-200 rounded-lg shadow p-10">
+        <h2 className="text-lg font-semibold mb-2">Sales Report 2</h2>
+        <div style={{ height: "200px" }}>
+        <CustomLineChart data={salesData2} strokeColor1="#007bff" fillColor1="#007bff" strokeColor2="#00c49f" fillColor2="lightblue" />
+        </div>
+      </div>
 
           {/* Graphique 3 */}
-          <div className="bg-white rounded-lg shadow p-10">
-            <h2 className="text-lg font-semibold mb-2">Sales Report 3</h2>
-            <div style={{ height: "150px" }}>
-              <LineChart data={salesData} />
+          <div className="bg-zinc-200 rounded-lg shadow p-10">
+            <h2 className="text-lg font-semibold mb-3">Sales Report 3</h2>
+            <div style={{ height: "200px" }}>
+            <CustomLineChart data={salesData3} strokeColor1="#007bff" fillColor1="#007bff" strokeColor2="#00c49f" fillColor2="lightblue" />
             </div>
           </div>
 
           {/* Graphique 4 */}
-          <div className="bg-white rounded-lg shadow p-10">
-            <h2 className="text-lg font-semibold mb-2">Sales Report 4</h2>
-            <div style={{ height: "150px" }}>
-              <LineChart data={salesData} />
+          <div className="bg-zinc-200 rounded-lg shadow p-10">
+            <h2 className="text-lg font-semibold mb-3">Sales Report 4</h2>
+            <div style={{ height: "200px" }}>
+            <CustomLineChart data={salesData4} strokeColor1="#007bff" fillColor1="#007bff" strokeColor2="#00c49f" fillColor2="lightblue" />
             </div>
           </div>
         </div>
@@ -253,44 +278,44 @@ function Overview() {
                 className="flex items-center justify-between py-3 border-b border-gray-200"
               >
                 <div className="flex items-center">
-                  {region.name === "United States" && (
+                  {region.name === "United Kingdom" && (
                     <img
-                      src="/US.svg"
+                      src="https://static.history.state.gov/countries/united-kingdom.jpg"
                       alt="United States Flag"
                       className="w-8 h-8 rounded-full mr-2"
                     />
                   )}
                   {region.name === "Germany" && (
                     <img
-                      src="/DE.svg"
+                      src="https://static.history.state.gov/countries/germany-flag.jpg"
                       alt="Germany Flag"
                       className="w-8 h-8 rounded-full mr-2"
                     />
                   )}
                   {region.name === "Italy" && (
                     <img
-                      src="/IT.svg"
+                      src="https://static.history.state.gov/countries/italy-flag.jpg"
                       alt="Italy Flag"
                       className="w-8 h-8 rounded-full mr-2"
                     />
                   )}
                   {region.name === "Russia" && (
                     <img
-                      src="/RU.svg"
+                      src="https://static.history.state.gov/countries/russia-flag.jpg"
                       alt="Russia Flag"
                       className="w-8 h-8 rounded-full mr-2"
                     />
                   )}
                   {region.name === "China" && (
                     <img
-                      src="/CH.svg"
+                      src="https://static.history.state.gov/countries/china-flag.jpg"
                       alt="China Flag"
                       className="w-8 h-8 rounded-full mr-3"
                     />
                   )}
                   {region.name === "Indonesia" && (
                     <img
-                      src="/ID.svg"
+                      src="https://static.history.state.gov/countries/indonesia.jpg"
                       alt="Indonesia Flag"
                       className="w-8 h-8 rounded-full mr-2"
                     />
@@ -303,6 +328,7 @@ function Overview() {
           </ul>
         </div>
       </div>
+    </div>
     </div>
   );
 }

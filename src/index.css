@@ -179,3 +179,12 @@ hr {
   border-radius: 30rem;
   opacity: 0.6;
 }
+
+.area-fill-1 {
+  fill: lightblue;
+  opacity: 0.7;
+}
+
+.area-fill-1 .recharts-area-area {
+  stroke: none;
+}

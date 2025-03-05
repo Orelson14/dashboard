@@ -1,5 +1,5 @@
 import React from 'react';
-import LineChart from '../../components/LineChart/LineChart';
+import LineChart from '../../components/CustomLineChart/CustomLineChart';
 
 function SalesReport() {
   const data = [
